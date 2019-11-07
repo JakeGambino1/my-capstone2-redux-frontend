@@ -1,8 +1,13 @@
-import { ADD_POST, USER_RETRIEVED } from '../constants/action-types';
+import {
+  ADD_POST,
+  USER_RETRIEVED,
+  PENDING_MENTORS_RETRIEVED
+} from '../constants/action-types';
 
 const initialState = {
   posts: [],
   remotePosts: [],
+  pendingMentors: [],
   currentUser: {}
 };
 
@@ -21,6 +26,12 @@ function rootReducer(state = initialState, action) {
     console.log(action.payload);
     return Object.assign({}, state, {
       currentUser: action.payload
+    });
+  }
+  if (action.type === PENDING_MENTORS_RETRIEVED) {
+    console.log(action.payload);
+    return Object.assign({}, state, {
+      pendingMentors: state.pendingMentors.concat(action.payload)
     });
   }
   return state;

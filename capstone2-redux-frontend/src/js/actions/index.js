@@ -1,4 +1,9 @@
-import { ADD_POST, ADD_USER, USER_RETRIEVED } from '../constants/action-types';
+import {
+  ADD_POST,
+  ADD_USER,
+  USER_RETRIEVED,
+  PENDING_MENTORS_RETRIEVED
+} from '../constants/action-types';
 import axios from 'axios';
 
 export function addPost(payload) {
@@ -43,13 +48,20 @@ export function loginUser(payload) {
   console.log(payload);
   return function(dispatch) {
     return axios.get('http://localhost:5000/api/users').then(res => {
-      // I want to get rid of this filter logic and handle it in a middleware
-      console.log('result of axios.get from loginUser:');
-      console.log(res);
       const currentUser = res.data.find(res => res.email === payload.email);
-      console.log('loginUser currentUser:');
-      console.log(currentUser);
       dispatch({ type: USER_RETRIEVED, payload: currentUser });
+    });
+  };
+}
+
+export function getPendingMentors() {
+  return function(dispatch) {
+    return axios.get('http://localhost:5000/api/users/').then(res => {
+      const pendingMentors = res.data.filter(
+        res => res.requestToBeMentor === true
+      );
+      console.log(pendingMentors);
+      dispatch({ type: PENDING_MENTORS_RETRIEVED, payload: pendingMentors });
     });
   };
 }

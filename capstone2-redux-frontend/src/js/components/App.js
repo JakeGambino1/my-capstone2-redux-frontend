@@ -5,6 +5,7 @@ import Post from './Posts';
 import UserForm from './AddUserForm';
 import LoginUser from './LoginUser';
 import UserProfile from './UserProfile';
+import PendingMentors from './PendingMentors';
 
 const App = () => (
   <>
@@ -31,6 +32,10 @@ const App = () => (
     <div>
       <h2>User Profile</h2>
       <UserProfile />
+    </div>
+    <div>
+      <h2>Get Mentor Requests</h2>
+      <PendingMentors />
     </div>
   </>
 );
