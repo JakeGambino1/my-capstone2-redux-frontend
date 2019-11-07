@@ -1,4 +1,4 @@
-import { ADD_POST, GET_USER } from '../constants/action-types';
+import { ADD_POST, USER_RETRIEVED } from '../constants/action-types';
 
 const initialState = {
   posts: [],
@@ -17,7 +17,8 @@ function rootReducer(state = initialState, action) {
       remotePosts: state.remotePosts.concat(action.payload)
     });
   }
-  if (action.type === GET_USER) {
+  if (action.type === USER_RETRIEVED) {
+    console.log(action.payload);
     return Object.assign({}, state, {
       currentUser: action.payload
     });

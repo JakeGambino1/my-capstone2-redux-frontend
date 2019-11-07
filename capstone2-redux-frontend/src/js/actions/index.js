@@ -1,4 +1,4 @@
-import { ADD_POST, ADD_USER, GET_USER } from '../constants/action-types';
+import { ADD_POST, ADD_USER, USER_RETRIEVED } from '../constants/action-types';
 import axios from 'axios';
 
 export function addPost(payload) {
@@ -47,8 +47,9 @@ export function loginUser(payload) {
       console.log('result of axios.get from loginUser:');
       console.log(res);
       const currentUser = res.data.find(res => res.email === payload.email);
+      console.log('loginUser currentUser:');
       console.log(currentUser);
-      dispatch({ type: GET_USER, payload: currentUser });
+      dispatch({ type: USER_RETRIEVED, payload: currentUser });
     });
   };
 }
