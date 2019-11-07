@@ -1,16 +1,15 @@
-import { ADD_POST } from '../constants/action-types';
-import { ADD_USER } from '../constants/action-types';
+import { ADD_POST, ADD_USER, GET_USER } from '../constants/action-types';
 import axios from 'axios';
 
 export function addPost(payload) {
   return { type: ADD_POST, payload };
 }
 
-export function getData() {
+export function getPosts() {
   return function(dispatch) {
     return axios.get('http://localhost:5000/api/posts/').then(res => {
       console.log(res);
-      dispatch({ type: 'DATA_LOADED', payload: res });
+      dispatch({ type: 'DATA_LOADED', payload: res.data });
     });
   };
 }
@@ -36,5 +35,20 @@ export function addUser(payload) {
           dispatch({ type: ADD_USER, payload: res });
         })
     );
+  };
+}
+
+export function loginUser(payload) {
+  console.log('loginUser payload =');
+  console.log(payload);
+  return function(dispatch) {
+    return axios.get('http://localhost:5000/api/users').then(res => {
+      // I want to get rid of this filter logic and handle it in a middleware
+      console.log('result of axios.get from loginUser:');
+      console.log(res);
+      const currentUser = res.data.find(res => res.email === payload.email);
+      console.log(currentUser);
+      dispatch({ type: GET_USER, payload: currentUser });
+    });
   };
 }
