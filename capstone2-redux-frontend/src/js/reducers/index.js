@@ -3,7 +3,8 @@ import {
   USER_RETRIEVED,
   PENDING_MENTORS_RETRIEVED,
   POST_CREATED,
-  REQUEST_MENTOR_STATUS
+  REQUEST_MENTOR_STATUS,
+  POST_LIKED
 } from '../constants/action-types';
 
 const initialState = {
@@ -47,6 +48,12 @@ function rootReducer(state = initialState, action) {
     console.log('REQUEST_MENTOR_STATUS reducer');
     return Object.assign({}, state, {
       currentUser: action.payload
+    });
+  }
+  if (action.type === POST_LIKED) {
+    console.log('POST_LIKED reducer');
+    return Object.assign({}, state, {
+      posts: state.posts
     });
   }
   return state;

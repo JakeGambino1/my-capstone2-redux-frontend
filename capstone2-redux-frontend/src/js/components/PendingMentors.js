@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPendingMentors, requestToBeMentor } from '../actions/index';
+import {
+  getPendingMentors,
+  requestToBeMentor,
+  approveUserToBeMentor,
+  denyUserToBeMentor
+} from '../actions/index';
 
 export class PendingMentors extends Component {
   componentDidMount() {
@@ -12,6 +17,14 @@ export class PendingMentors extends Component {
       console.log('approveUser called');
       e.preventDefault();
       console.log(`approver user ${e.target.name}`);
+      this.props.approveUserToBeMentor(e.target.name);
+    };
+
+    const denyUser = e => {
+      console.log('denyUser called');
+      e.preventDefault();
+      console.log(`deny user ${e.target.name}`);
+      this.props.denyUserToBeMentor(e.target.name);
     };
 
     const changeMentorStatus = e => {
@@ -52,6 +65,9 @@ export class PendingMentors extends Component {
                 <button name={el._id} onClick={approveUser}>
                   Approve User
                 </button>
+                <button name={el._id} onClick={denyUser}>
+                  Deny User
+                </button>
               </li>
             ))}
         </ul>
@@ -69,5 +85,10 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getPendingMentors, requestToBeMentor }
+  {
+    getPendingMentors,
+    requestToBeMentor,
+    approveUserToBeMentor,
+    denyUserToBeMentor
+  }
 )(PendingMentors);

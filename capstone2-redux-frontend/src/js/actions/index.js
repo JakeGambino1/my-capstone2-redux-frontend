@@ -3,7 +3,10 @@ import {
   ADD_USER,
   USER_RETRIEVED,
   PENDING_MENTORS_RETRIEVED,
-  REQUEST_MENTOR_STATUS
+  REQUEST_MENTOR_STATUS,
+  PENDING_MENTOR_APPROVED,
+  PENDING_MENTOR_DENIED,
+  POST_LIKED
 } from '../constants/action-types';
 import axios from 'axios';
 
@@ -76,5 +79,32 @@ export function requestToBeMentor(payload) {
     return axios
       .get(`http://localhost:5000/api/users/${payload}`)
       .then(dispatch({ type: REQUEST_MENTOR_STATUS, payload }));
+  };
+}
+
+export function approveUserToBeMentor(payload) {
+  console.log(`user ${payload} request has been approved`);
+  return function(dispatch) {
+    return axios
+      .get(`http://localhost:5000/api/users/${payload}`)
+      .then(dispatch({ type: PENDING_MENTOR_APPROVED, payload }));
+  };
+}
+
+export function denyUserToBeMentor(payload) {
+  console.log(`user ${payload} request has been denied`);
+  return function(dispatch) {
+    return axios
+      .get(`http://localhost:5000/api/users/${payload}`)
+      .then(dispatch({ type: PENDING_MENTOR_DENIED, payload }));
+  };
+}
+
+export function likePost(payload) {
+  console.log(`post ${payload} is getting popular!`);
+  axios.put(`http://localhost:5000/api/posts/like/${payload}`);
+  return function(dispatch) {
+    console.log('make it here?');
+    dispatch({ type: POST_LIKED, payload });
   };
 }

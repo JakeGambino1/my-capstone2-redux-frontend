@@ -2,7 +2,10 @@ import {
   USER_RETRIEVED,
   PENDING_MENTORS_RETRIEVED,
   POST_CREATED,
-  REQUEST_MENTOR_STATUS
+  REQUEST_MENTOR_STATUS,
+  PENDING_MENTOR_APPROVED,
+  PENDING_MENTOR_DENIED,
+  POST_LIKED
 } from '../constants/action-types';
 import axios from 'axios';
 import store from '../store/index';
@@ -27,6 +30,24 @@ export function middlewareFunctions({ dispatch }) {
         axios.put(`http://localhost:5000/api/users/${action.payload}`, {
           requestToBeMentor: true
         });
+      }
+      if (action.type === PENDING_MENTOR_APPROVED) {
+        console.log('PENDING_MENTOR_APPROVED middleware');
+        axios.put(`http://localhost:5000/api/users/${action.payload}`, {
+          requestToBeMentor: false,
+          isMentor: false
+        });
+      }
+      if (action.type === PENDING_MENTOR_DENIED) {
+        console.log('PENDING_MENTOR_DENIED middleware');
+        axios.put(`http://localhost:5000/api/users/${action.payload}`, {
+          requestToBeMentor: false,
+          isMentor: true
+        });
+      }
+      if (action.type === POST_LIKED) {
+        console.log(`POST_LIKED middleware ${action.payload}`);
+        axios.put(`http://localhost:5000/api/posts/like/${action.payload}`);
       }
       return next(action);
     };
