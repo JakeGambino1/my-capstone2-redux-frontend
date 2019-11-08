@@ -1,65 +1,3 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { getPendingMentors } from '../actions/index';
-// import { findCurrentUser } from '../middleware';
-
-// function mapStateToProps(state) {
-//   return {
-//     pendingMentors: state.pendingMentors,
-//     currentUser: state.currentUser
-//   };
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     findCurrentUser: currentUser => dispatch(findCurrentUser(currentUser))
-//   };
-// }
-
-// class PendingMentors extends Component {
-//   // constructor(props) {
-//   //   super(props);
-//   //   this.state = {
-//   //     pendingMentors: getPendingMentors(),
-//   //     currentUser: this.state.currentUser
-//   //   };
-//   // }
-
-//   componentDidMount() {
-//     this.props.getPendingMentors();
-//   }
-
-//   render() {
-//     if (this.currentUser === undefined) {
-//       console.log(this.currentUser);
-//       console.log(this.props.pendingMentors);
-//       return (
-//         <div>
-//           <p>You must be an admin to see pending requests</p>
-//         </div>
-//       );
-//     }
-
-//     console.log(this.props.currentUser);
-//     if (this.currentUser.isAdmin) {
-//       return (
-//         <ul>
-//           {this.props.pendingMentors.map(el => (
-//             <li key={el.id}>
-//               Name: {el.firstName} {el.lastName}
-//             </li>
-//           ))}
-//         </ul>
-//       );
-//     }
-//   }
-// }
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(PendingMentors);
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPendingMentors } from '../actions/index';
@@ -76,11 +14,27 @@ export class PendingMentors extends Component {
       console.log(`approver user ${e.target.name}`);
     };
 
+    const changeMentorStatus = e => {
+      e.preventDefault();
+      console.log(`user ${e.target.name} is requesting to be a mentor`);
+    };
+
     if (
-      this.props.currentUser.isAdmin === undefined ||
+      (this.props.currentUser.isAdmin === undefined ||
+        this.props.currentUser.isAdmin === false) &&
+      this.props.currentUser.isMentor === undefined
+    ) {
+      return <p>only admins can view pending mentor requests</p>;
+    }
+    if (
+      this.props.currentUser.isMentor === false &&
       this.props.currentUser.isAdmin === false
     ) {
-      return <p>currentUser undefined, no mentor requests will be rendered</p>;
+      return (
+        <button onClick={changeMentorStatus} name={this.props.currentUser._id}>
+          I want to become a mentor
+        </button>
+      );
     }
     if (this.props.currentUser.isAdmin) {
       return (

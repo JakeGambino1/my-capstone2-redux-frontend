@@ -5,6 +5,10 @@ const mapStateToProps = state => {
   return { posts: state.posts };
 };
 
+const removeNotification = e => {
+  console.log(`remove notification from post ${e.target.name}`);
+};
+
 const ConnectedList = ({ posts, i }) => (
   <ul>
     {posts.map(el => (
@@ -12,6 +16,13 @@ const ConnectedList = ({ posts, i }) => (
         <div>
           <h4 key={'title ' + i}>{el.title}</h4>
           <h5 key={'content ' + i}>{el.content}</h5>
+          {el.isNewPost ? (
+            <button onClick={removeNotification} name={el._id}>
+              This will be a badge
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
       </li>
     ))}

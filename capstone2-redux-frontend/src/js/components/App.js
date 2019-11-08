@@ -31,7 +31,7 @@ const App = () => (
       <UserProfile />
     </div>
     <div>
-      <h2>Get Mentor Requests</h2>
+      <h2>Mentor Requests</h2>
       <PendingMentors />
     </div>
   </>
