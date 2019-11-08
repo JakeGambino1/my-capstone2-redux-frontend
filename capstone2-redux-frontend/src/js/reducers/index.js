@@ -23,13 +23,14 @@ function rootReducer(state = initialState, action) {
     });
   }
   if (action.type === USER_RETRIEVED) {
-    console.log(action.payload);
+    console.log('USER_RETRIEVED reducer');
     return Object.assign({}, state, {
-      currentUser: action.payload
+      currentUser: action.payload,
+      pendingMentors: state.pendingMentors.concat(null)
     });
   }
   if (action.type === PENDING_MENTORS_RETRIEVED) {
-    console.log(action.payload);
+    console.log('PENDING_MENTORS_RETRIEVED reducer');
     return Object.assign({}, state, {
       pendingMentors: state.pendingMentors.concat(action.payload)
     });

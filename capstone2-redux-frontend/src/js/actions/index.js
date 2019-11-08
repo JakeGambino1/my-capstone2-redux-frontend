@@ -20,7 +20,6 @@ export function getPosts() {
 }
 
 export function addUser(payload) {
-  console.log(payload);
   return function(dispatch) {
     return (
       axios
@@ -44,8 +43,7 @@ export function addUser(payload) {
 }
 
 export function loginUser(payload) {
-  console.log('loginUser payload =');
-  console.log(payload);
+  console.log('loginUser action');
   return function(dispatch) {
     return axios.get('http://localhost:5000/api/users').then(res => {
       const currentUser = res.data.find(res => res.email === payload.email);
@@ -55,6 +53,7 @@ export function loginUser(payload) {
 }
 
 export function getPendingMentors() {
+  console.log('pending mentors action');
   return function(dispatch) {
     return axios.get('http://localhost:5000/api/users/').then(res => {
       const pendingMentors = res.data.filter(
