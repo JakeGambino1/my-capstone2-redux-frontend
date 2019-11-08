@@ -19,7 +19,7 @@ function rootReducer(state = initialState, action) {
   }
   if (action.type === 'DATA_LOADED') {
     return Object.assign({}, state, {
-      remotePosts: state.remotePosts.concat(action.payload)
+      posts: state.posts.concat(action.payload)
     });
   }
   if (action.type === USER_RETRIEVED) {

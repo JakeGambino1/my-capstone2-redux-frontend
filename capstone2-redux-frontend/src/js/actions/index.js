@@ -1,5 +1,5 @@
 import {
-  ADD_POST,
+  POST_CREATED,
   ADD_USER,
   USER_RETRIEVED,
   PENDING_MENTORS_RETRIEVED
@@ -7,7 +7,10 @@ import {
 import axios from 'axios';
 
 export function addPost(payload) {
-  return { type: ADD_POST, payload };
+  console.log('AddPost action');
+  return function(dispatch) {
+    dispatch({ type: POST_CREATED, payload });
+  };
 }
 
 export function getPosts() {
