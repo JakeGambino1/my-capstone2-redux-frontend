@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getPosts } from '../actions/index';
 
 const mapStateToProps = state => {
   return { posts: state.posts };
@@ -29,6 +30,9 @@ const ConnectedList = ({ posts, i }) => (
   </ul>
 );
 
-const PostList = connect(mapStateToProps)(ConnectedList);
+const PostList = connect(
+  mapStateToProps,
+  { getPosts }
+)(ConnectedList);
 
 export default PostList;

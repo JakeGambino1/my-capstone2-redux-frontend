@@ -6,20 +6,15 @@ export class Post extends Component {
   componentDidMount() {
     this.props.getPosts();
   }
+
   render() {
-    return (
-      <ul>
-        {this.props.posts.map(el => (
-          <li key={el.id}>{el.title}</li>
-        ))}
-      </ul>
-    );
+    return <div></div>;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    posts: state.remotePosts.slice(0, 10)
+    posts: state.posts.slice(0, 10)
   };
 }
 

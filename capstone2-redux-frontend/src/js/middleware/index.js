@@ -4,6 +4,7 @@ import {
   POST_CREATED
 } from '../constants/action-types';
 import axios from 'axios';
+import store from '../store/index';
 
 export function middlewareFunctions({ dispatch }) {
   return function(next) {
@@ -15,7 +16,7 @@ export function middlewareFunctions({ dispatch }) {
       if (action.type === POST_CREATED) {
         console.log('POST_CREATED middleware');
         axios.post('http://localhost:5000/api/posts', {
-          user: action.payload._id,
+          user: store.getState().currentUser._id,
           title: action.payload.title,
           content: action.payload.content
         });

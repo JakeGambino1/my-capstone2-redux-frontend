@@ -1,7 +1,8 @@
 import {
   ADD_POST,
   USER_RETRIEVED,
-  PENDING_MENTORS_RETRIEVED
+  PENDING_MENTORS_RETRIEVED,
+  POST_CREATED
 } from '../constants/action-types';
 
 const initialState = {
@@ -33,6 +34,12 @@ function rootReducer(state = initialState, action) {
     console.log('PENDING_MENTORS_RETRIEVED reducer');
     return Object.assign({}, state, {
       pendingMentors: state.pendingMentors.concat(action.payload)
+    });
+  }
+  if (action.type === POST_CREATED) {
+    console.log('POST_CREATED reducer');
+    return Object.assign({}, state, {
+      posts: state.posts.concat(action.payload)
     });
   }
   return state;
