@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPendingMentors } from '../actions/index';
+import { getPendingMentors, requestToBeMentor } from '../actions/index';
 
 export class PendingMentors extends Component {
   componentDidMount() {
@@ -17,6 +17,7 @@ export class PendingMentors extends Component {
     const changeMentorStatus = e => {
       e.preventDefault();
       console.log(`user ${e.target.name} is requesting to be a mentor`);
+      this.props.requestToBeMentor(e.target.name);
     };
 
     if (
@@ -28,13 +29,17 @@ export class PendingMentors extends Component {
     }
     if (
       this.props.currentUser.isMentor === false &&
-      this.props.currentUser.isAdmin === false
+      this.props.currentUser.isAdmin === false &&
+      this.props.currentUser.requestToBeMentor === false
     ) {
       return (
         <button onClick={changeMentorStatus} name={this.props.currentUser._id}>
           I want to become a mentor
         </button>
       );
+    }
+    if (this.props.currentUser.requestToBeMentor === true) {
+      return <p>Your request is pending approval</p>;
     }
     if (this.props.currentUser.isAdmin) {
       return (
@@ -64,5 +69,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getPendingMentors }
+  { getPendingMentors, requestToBeMentor }
 )(PendingMentors);

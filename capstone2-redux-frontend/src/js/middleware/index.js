@@ -1,7 +1,8 @@
 import {
   USER_RETRIEVED,
   PENDING_MENTORS_RETRIEVED,
-  POST_CREATED
+  POST_CREATED,
+  REQUEST_MENTOR_STATUS
 } from '../constants/action-types';
 import axios from 'axios';
 import store from '../store/index';
@@ -19,6 +20,12 @@ export function middlewareFunctions({ dispatch }) {
           user: store.getState().currentUser._id,
           title: action.payload.title,
           content: action.payload.content
+        });
+      }
+      if (action.type === REQUEST_MENTOR_STATUS) {
+        console.log('REQUEST_MENTOR_STATUS middleware');
+        axios.put(`http://localhost:5000/api/users/${action.payload}`, {
+          requestToBeMentor: true
         });
       }
       return next(action);

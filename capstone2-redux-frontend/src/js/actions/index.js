@@ -2,7 +2,8 @@ import {
   POST_CREATED,
   ADD_USER,
   USER_RETRIEVED,
-  PENDING_MENTORS_RETRIEVED
+  PENDING_MENTORS_RETRIEVED,
+  REQUEST_MENTOR_STATUS
 } from '../constants/action-types';
 import axios from 'axios';
 
@@ -65,5 +66,15 @@ export function getPendingMentors() {
       console.log(pendingMentors);
       dispatch({ type: PENDING_MENTORS_RETRIEVED, payload: pendingMentors });
     });
+  };
+}
+
+export function requestToBeMentor(payload) {
+  console.log('request to be a mentor action');
+  console.log(payload);
+  return function(dispatch) {
+    return axios
+      .get(`http://localhost:5000/api/users/${payload}`)
+      .then(dispatch({ type: REQUEST_MENTOR_STATUS, payload }));
   };
 }
