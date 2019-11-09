@@ -5,7 +5,7 @@ class ActionListItem extends Component {
   render() {
     return this.props.actionListItems.map((actionItem, i) => (
       <tr>
-        <td>
+        <td className="center">
           <label>
             <input
               key={'input' + i}
@@ -15,8 +15,10 @@ class ActionListItem extends Component {
             <span></span>
           </label>
         </td>
-        <td key={i}>{actionItem.title}</td>
-        <td>
+        <td className="center" key={i}>
+          {actionItem.title}
+        </td>
+        <td className="center">
           <DeleteActionListItem key={i} actionListItemId={actionItem._id} />
         </td>
       </tr>

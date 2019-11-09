@@ -32,6 +32,19 @@ export class PendingMentors extends Component {
       console.log(`user ${e.target.name} is requesting to be a mentor`);
       this.props.requestToBeMentor(e.target.name);
     };
+
+    // <table>
+    //   <thead>
+    //     <tr>
+    //       <th>Name of User</th>
+    //       <th>Approve User</th>
+    //       <th>Deny User</th>
+    //     </tr>
+    //     <tr>
+
+    //     </tr>
+    //   </thead>
+    // </table>
     if (
       (this.props.currentUser.isAdmin === undefined ||
         this.props.currentUser.isAdmin === false) &&

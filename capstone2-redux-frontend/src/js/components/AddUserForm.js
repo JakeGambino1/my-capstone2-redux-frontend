@@ -62,6 +62,7 @@ class ConnectedForm extends Component {
       youtube: '',
       linkedin: ''
     });
+    document.getElementById('register-user').className += 'hide';
   };
 
   render() {

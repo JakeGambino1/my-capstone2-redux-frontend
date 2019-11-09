@@ -27,13 +27,19 @@ const App = () => (
         </div>
       </div>
       <div id="user-specific-info" className="container hide">
-        <section id="profile">
-          <UserProfile />
-        </section>
-        <section id="mentor" className="center">
-          <h4 className="center">Mentor Space</h4>
-          <PendingMentors />
-        </section>
+        <div className="row">
+          <div className="col m6">
+            <section id="profile">
+              <UserProfile />
+            </section>
+          </div>
+          <div className="col m6">
+            <section id="mentor" className="center">
+              <h4 className="center">Mentor Space</h4>
+              <PendingMentors />
+            </section>
+          </div>
+        </div>
       </div>
       <div className="row">
         <div className="col m6">

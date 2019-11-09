@@ -7,28 +7,24 @@ const mapStateToProps = state => {
 
 const ConnectedProfile = ({ currentUser }) => (
   <div className="row">
-    <div className="col m4">
+    <div className="center">
       <img
         className="circle responsive-img"
         src={currentUser.avatar}
         alt="current user headshot"
       />
-    </div>
-    <div className="col m8">
-      <div className="center">
-        <p>
-          Name: {currentUser.firstName} {currentUser.lastName}
-        </p>
-        <p>Email: {currentUser.email}</p>
-        <p>Interests: {currentUser.interests}</p>
-        <p>Bio: {currentUser.bio}</p>
-        <p>
-          Youtube: <a href={currentUser.youtube}>{currentUser.youtube}</a>
-        </p>
-        <p>
-          LinkedIn: <a href={currentUser.linkedin}>{currentUser.linkedin}</a>
-        </p>
-      </div>
+      <p className="flow-text">
+        Name: {currentUser.firstName} {currentUser.lastName}
+      </p>
+      <p className="flow-text">Email: {currentUser.email}</p>
+      <p className="flow-text">Interests: {currentUser.interests}</p>
+      <p className="flow-text">Bio: {currentUser.bio}</p>
+      <p className="flow-text">
+        Youtube: <a href={currentUser.youtube}>{currentUser.youtube}</a>
+      </p>
+      <p className="flow-text">
+        LinkedIn: <a href={currentUser.linkedin}>{currentUser.linkedin}</a>
+      </p>
     </div>
   </div>
 );

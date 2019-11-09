@@ -61,9 +61,9 @@ class ActionList extends Component {
         <table>
           <thead>
             <tr>
-              <th>Completed?</th>
-              <th>Name of Task</th>
-              <th>Delete Item</th>
+              <th className="center">Completed?</th>
+              <th className="center">Name of Task</th>
+              <th className="center">Delete Item</th>
             </tr>
           </thead>
 
