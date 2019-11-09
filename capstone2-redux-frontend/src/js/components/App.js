@@ -8,6 +8,7 @@ import LoginUser from './LoginUser';
 import UserProfile from './UserProfile';
 import PendingMentors from './PendingMentors';
 import Navbar from './Navbar';
+import ActionList from './action-list/ActionList';
 
 const App = () => (
   <Router>
@@ -37,6 +38,10 @@ const App = () => (
       <section id="mentor">
         <h2 className="center">Mentor Space</h2>
         <PendingMentors />
+      </section>
+      <section id="action-list">
+        <h2 className="center">Action List</h2>
+        <ActionList />
       </section>
     </div>
   </Router>

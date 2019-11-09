@@ -7,14 +7,25 @@ const mapStateToProps = state => {
 
 const ConnectedProfile = ({ currentUser }) => (
   <div className="row">
-    <p>
-      Name: {currentUser.firstName} {currentUser.lastName}
-    </p>
-    <p>email: {currentUser.email}</p>
-    <p>Interests: {currentUser.interests}</p>
-    <p>Bio: {currentUser.bio}</p>
-    <p>Youtube: {currentUser.youtube}</p>
-    <p>LinkedIn: {currentUser.linkedin}</p>
+    <div className="col m4">
+      <img
+        className="circle responsive-img"
+        src={currentUser.avatar}
+        alt="current user headshot"
+      />
+    </div>
+    <div className="col m8">
+      <div className="center">
+        <p>
+          Name: {currentUser.firstName} {currentUser.lastName}
+        </p>
+        <p>Email: {currentUser.email}</p>
+        <p>Interests: {currentUser.interests}</p>
+        <p>Bio: {currentUser.bio}</p>
+        <p>Youtube: {currentUser.youtube}</p>
+        <p>LinkedIn: {currentUser.linkedin}</p>
+      </div>
+    </div>
   </div>
 );
 

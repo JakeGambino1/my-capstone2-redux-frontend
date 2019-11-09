@@ -45,7 +45,11 @@ export class PendingMentors extends Component {
       this.props.currentUser.requestToBeMentor === false
     ) {
       return (
-        <button onClick={changeMentorStatus} name={this.props.currentUser._id}>
+        <button
+          className="btn"
+          onClick={changeMentorStatus}
+          name={this.props.currentUser._id}
+        >
           I want to become a mentor
         </button>
       );
@@ -64,10 +68,10 @@ export class PendingMentors extends Component {
             .map(el => (
               <li>
                 Name: {el.firstName} {el.lastName}{' '}
-                <button name={el._id} onClick={approveUser}>
+                <button className="btn" name={el._id} onClick={approveUser}>
                   Approve User
                 </button>
-                <button name={el._id} onClick={denyUser}>
+                <button className="btn" name={el._id} onClick={denyUser}>
                   Deny User
                 </button>
               </li>

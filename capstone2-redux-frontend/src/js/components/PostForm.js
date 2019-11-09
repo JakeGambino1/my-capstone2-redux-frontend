@@ -46,8 +46,9 @@ class ConnectedForm extends Component {
           </div>
           <div class="input-field">
             <label htmlFor="content">Content</label>
-            <input
-              type="text"
+            <textarea
+              className="materialize-textarea"
+              type="textarea"
               id="content"
               value={content}
               onChange={this.handleChange}
