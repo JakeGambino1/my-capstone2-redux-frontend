@@ -32,7 +32,6 @@ export class PendingMentors extends Component {
       console.log(`user ${e.target.name} is requesting to be a mentor`);
       this.props.requestToBeMentor(e.target.name);
     };
-
     if (
       (this.props.currentUser.isAdmin === undefined ||
         this.props.currentUser.isAdmin === false) &&
@@ -53,6 +52,9 @@ export class PendingMentors extends Component {
     }
     if (this.props.currentUser.requestToBeMentor === true) {
       return <p>Your request is pending approval</p>;
+    }
+    if (this.props.currentUser.isMentor === true) {
+      return <p>You are a mentor!</p>;
     }
     if (this.props.currentUser.isAdmin) {
       return (

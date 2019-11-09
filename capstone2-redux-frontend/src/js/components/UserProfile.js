@@ -6,7 +6,7 @@ const mapStateToProps = state => {
 };
 
 const ConnectedProfile = ({ currentUser }) => (
-  <div>
+  <div className="row">
     <p>
       Name: {currentUser.firstName} {currentUser.lastName}
     </p>

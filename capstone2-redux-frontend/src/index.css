@@ -1,13 +1,169 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(160, 190, 214);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: rgb(1, 0, 130);
+  color: rgb(160, 190, 214);
+  border-bottom: 3px solid white;
+}
+
+a {
+  color: white;
+}
+
+.profile a:hover {
+  padding: 5px;
+  color: rgb(1, 0, 130);
+  text-decoration: underline;
+}
+
+.btn {
+  background-color: rgb(1, 0, 130);
+  color: rgb(160, 190, 214);
+  border: 1px solid white;
+}
+
+.btn:hover {
+  background-color: rgb(160, 190, 214);
+  color: rgb(1, 0, 130);
+  border: 1px solid rgb(1, 0, 130);
+}
+
+.landing-page {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+  color: rgb(1, 0, 130);
+}
+
+.input-field label {
+  color: white;
+}
+
+.input-field .active {
+  color: rgb(1, 0, 130);
+}
+
+.profile {
+  position: relative;
+  left: -600px;
+  -webkit-animation: slideLeftToRight 0.5s forwards;
+  animation: slideLeftToRight 0.5s forwards;
+}
+
+@-webkit-keyframes slideLeftToRight {
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slideLeftToRight {
+  100% {
+    left: 0;
+  }
+}
+
+.main-feature {
+  position: relative;
+  right: -1000px;
+  -webkit-animation: slideRightToLeft 1.5s forwards;
+  animation: slideRightToLeft 1.5s forwards;
+}
+
+@-webkit-keyframes slideRightToLeft {
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slideRightToLeft {
+  100% {
+    right: 0;
+  }
+}
+
+.secondary-feature {
+  position: relative;
+  bottom: -1000px;
+  -webkit-animation: slideBottomToTop 2.5s forwards;
+  animation: slideBottomToTop 2.5s forwards;
+}
+
+@-webkit-keyframes slideBottomToTop {
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes slideBottomToTop {
+  100% {
+    bottom: 0;
+  }
+}
+
+.slide-from-top {
+  position: relative;
+  top: -1000px;
+  -webkit-animation: slideTopToBottm 0.5s forwards;
+  animation: slideTopToBottm 0.5s forwards;
+}
+
+@-webkit-keyframes slideTopToBottm {
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes slideTopToBottm {
+  100% {
+    top: 0;
+  }
 }

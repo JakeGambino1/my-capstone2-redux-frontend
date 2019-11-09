@@ -33,27 +33,31 @@ class ConnectedForm extends Component {
   render() {
     const { title, content } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="content">Content</label>
-          <input
-            type="text"
-            id="content"
-            value={content}
-            onChange={this.handleChange}
-          />
-        </div>
-        <button type="submit">SAVE</button>
-      </form>
+      <div className="row">
+        <form onSubmit={this.handleSubmit}>
+          <div class="input-field">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div class="input-field">
+            <label htmlFor="content">Content</label>
+            <input
+              type="text"
+              id="content"
+              value={content}
+              onChange={this.handleChange}
+            />
+          </div>
+          <button className="btn" type="submit">
+            Add Post
+          </button>
+        </form>
+      </div>
     );
   }
 }
