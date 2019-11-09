@@ -13,6 +13,14 @@ const App = () => (
   <Router>
     <Navbar />
     <div className="container">
+      <section id="login">
+        <h2 className="center">Login</h2>
+        <LoginUser />
+      </section>
+      <section id="register-user">
+        <h2 className="center">Register A User</h2>
+        <UserForm />
+      </section>
       <h2 className="center">Posts</h2>
       <section id="posts">
         <Post />
@@ -21,14 +29,6 @@ const App = () => (
       <section id="add-post">
         <h2 className="center">Add a new Post</h2>
         <PostForm />
-      </section>
-      <section id="register-user">
-        <h2 className="center">Register A User</h2>
-        <UserForm />
-      </section>
-      <section id="login">
-        <h2 className="center">Login</h2>
-        <LoginUser />
       </section>
       <section id="profile">
         <h2 className="center">User Profile</h2>

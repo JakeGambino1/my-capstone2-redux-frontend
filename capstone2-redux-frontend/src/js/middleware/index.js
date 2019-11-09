@@ -5,7 +5,8 @@ import {
   REQUEST_MENTOR_STATUS,
   PENDING_MENTOR_APPROVED,
   PENDING_MENTOR_DENIED,
-  POST_LIKED
+  POST_LIKED,
+  REMOVE_NEW_FROM_POST
 } from '../constants/action-types';
 import axios from 'axios';
 import store from '../store/index';
@@ -48,6 +49,15 @@ export function middlewareFunctions({ dispatch }) {
       if (action.type === POST_LIKED) {
         console.log(`POST_LIKED middleware ${action.payload}`);
         axios.put(`http://localhost:5000/api/posts/like/${action.payload}`);
+      }
+      if (action.type === REMOVE_NEW_FROM_POST) {
+        console.log(`REMOVE_NEW_FROM_POST middlware ${action.payload}`);
+        axios.put(
+          `http://localhost:5000/api/written-content/${action.payload}`,
+          {
+            isNewPost: false
+          }
+        );
       }
       return next(action);
     };

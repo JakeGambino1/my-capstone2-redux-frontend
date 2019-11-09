@@ -6,7 +6,8 @@ import {
   REQUEST_MENTOR_STATUS,
   PENDING_MENTOR_APPROVED,
   PENDING_MENTOR_DENIED,
-  POST_LIKED
+  POST_LIKED,
+  REMOVE_NEW_FROM_POST
 } from '../constants/action-types';
 import axios from 'axios';
 
@@ -106,5 +107,16 @@ export function likePost(payload) {
   return function(dispatch) {
     console.log('make it here?');
     dispatch({ type: POST_LIKED, payload });
+  };
+}
+
+export function removeNewFromPost(payload) {
+  console.log(`post ${payload} is no longer new`);
+  axios.put(`http://localhost:5000/api/posts/${payload}`, {
+    isNewPost: false
+  });
+  return function(dispatch) {
+    console.log('made it to removeNewFromPost dispatch??');
+    dispatch({ type: REMOVE_NEW_FROM_POST, payload });
   };
 }

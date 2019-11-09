@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { likePost } from '../actions/index';
+import { likePost, removeNewFromPost } from '../actions/index';
 
 const mapStateToProps = state => {
   return { posts: state.posts };
 };
 
 const removeNotification = e => {
-  console.log(`remove notification from post ${e.target.name}`);
+  e.preventDefault();
+  console.log(`remove notification from post ${e.target.getAttribute('name')}`);
+  removeNewFromPost(e.target.getAttribute('name'));
 };
 
 const likeThisPost = e => {
@@ -22,20 +24,23 @@ const ConnectedList = ({ posts, i }) => (
     {posts.map(el => (
       <li key={i}>
         <div>
-          <h4 key={'title ' + i}>
+          <h5 key={'title ' + i}>
             {el.title}
             {el.isNewPost ? (
               <span
-                onClick={removeNotification.bind(this)}
+                name={el._id}
+                onClick={removeNotification}
                 class="collection-item"
               >
-                <span class="new badge"></span>
+                <span name={el._id} class="new badge">
+                  this is
+                </span>
               </span>
             ) : (
               <div></div>
             )}
-          </h4>
-          <h5 key={'content ' + i}>{el.content}</h5>
+          </h5>
+          <h6 key={'content ' + i}>{el.content}</h6>
           <button
             className="btn"
             name={el._id}
@@ -52,7 +57,7 @@ const ConnectedList = ({ posts, i }) => (
 
 const PostList = connect(
   mapStateToProps,
-  { likePost }
+  { likePost, removeNewFromPost }
 )(ConnectedList);
 
 export default PostList;

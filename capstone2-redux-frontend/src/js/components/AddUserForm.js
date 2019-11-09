@@ -76,85 +76,95 @@ class ConnectedForm extends Component {
       linkedin
     } = this.state;
     return (
-      <div className="row">
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-field">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              id="firstName"
-              value={firstName}
-              onChange={this.handleChange}
-            />
+      <form onSubmit={this.handleSubmit}>
+        <div className="row">
+          <div className="col m6">
+            <div className="input-field">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                value={firstName}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <div className="input-field">
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={this.handleChange}
-            />
+          <div className="col m6">
+            <div className="input-field">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                value={lastName}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={this.handleChange}
-            />
+        </div>
+        <div className="input-field">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="input-field">
+          <label htmlFor="password">Password</label>
+          <input
+            type="text"
+            id="password"
+            value={password}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="input-field">
+          <label htmlFor="interests">Interests</label>
+          <input
+            type="text"
+            id="interests"
+            value={interests}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="input-field">
+          <label htmlFor="bio">Bio</label>
+          <input
+            type="text"
+            id="bio"
+            value={bio}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="row">
+          <div className="col m6">
+            <div className="input-field">
+              <label htmlFor="youtube">YouTube Channel</label>
+              <input
+                type="text"
+                id="youtube"
+                value={youtube}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input
-              type="text"
-              id="password"
-              value={password}
-              onChange={this.handleChange}
-            />
+          <div className="col m6">
+            <div className="input-field">
+              <label htmlFor="linkedin">LinkedIn Profile</label>
+              <input
+                type="text"
+                id="linkedin"
+                value={linkedin}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <div className="input-field">
-            <label htmlFor="interests">Interests</label>
-            <input
-              type="text"
-              id="interests"
-              value={interests}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="bio">Bio</label>
-            <input
-              type="text"
-              id="bio"
-              value={bio}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="youtube">YouTube Channel</label>
-            <input
-              type="text"
-              id="youtube"
-              value={youtube}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="linkedin">LinkedIn Profile</label>
-            <input
-              type="text"
-              id="linkedin"
-              value={linkedin}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button className="btn" type="submit">
-            Register User
-          </button>
-        </form>
-      </div>
+        </div>
+        <button className="btn" type="submit">
+          Register User
+        </button>
+      </form>
     );
   }
 }

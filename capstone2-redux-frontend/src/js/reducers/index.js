@@ -4,7 +4,8 @@ import {
   PENDING_MENTORS_RETRIEVED,
   POST_CREATED,
   REQUEST_MENTOR_STATUS,
-  POST_LIKED
+  POST_LIKED,
+  REMOVE_NEW_FROM_POST
 } from '../constants/action-types';
 
 const initialState = {
@@ -52,6 +53,12 @@ function rootReducer(state = initialState, action) {
   }
   if (action.type === POST_LIKED) {
     console.log('POST_LIKED reducer');
+    return Object.assign({}, state, {
+      posts: state.posts
+    });
+  }
+  if (action.type === REMOVE_NEW_FROM_POST) {
+    console.log('REMOVE_NEW_FROM_POST reducer');
     return Object.assign({}, state, {
       posts: state.posts
     });
