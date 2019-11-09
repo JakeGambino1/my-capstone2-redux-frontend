@@ -22,8 +22,12 @@ const ConnectedProfile = ({ currentUser }) => (
         <p>Email: {currentUser.email}</p>
         <p>Interests: {currentUser.interests}</p>
         <p>Bio: {currentUser.bio}</p>
-        <p>Youtube: {currentUser.youtube}</p>
-        <p>LinkedIn: {currentUser.linkedin}</p>
+        <p>
+          Youtube: <a href={currentUser.youtube}>{currentUser.youtube}</a>
+        </p>
+        <p>
+          LinkedIn: <a href={currentUser.linkedin}>{currentUser.linkedin}</a>
+        </p>
       </div>
     </div>
   </div>

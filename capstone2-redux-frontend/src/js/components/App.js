@@ -13,37 +13,48 @@ import ActionList from './action-list/ActionList';
 const App = () => (
   <Router>
     <Navbar />
-    <div className="container">
-      <section id="login">
-        <h2 className="center">Login</h2>
-        <LoginUser />
-      </section>
-      <section id="register-user">
-        <h2 className="center">Register A User</h2>
-        <UserForm />
-      </section>
-      <h2 className="center">Posts</h2>
-      <section id="posts">
-        <Post />
-        <PostList />
-      </section>
-      <section id="add-post">
-        <h2 className="center">Add a new Post</h2>
-        <PostForm />
-      </section>
-      <section id="profile">
-        <h2 className="center">User Profile</h2>
-        <UserProfile />
-      </section>
-      <section id="mentor">
-        <h2 className="center">Mentor Space</h2>
-        <PendingMentors />
-      </section>
-      <section id="action-list">
-        <h2 className="center">Action List</h2>
-        <ActionList />
-      </section>
-    </div>
+    <>
+      <div id="login-register-container">
+        <div className="container">
+          <section id="login">
+            <h4 className="center">Login</h4>
+            <LoginUser />
+          </section>
+          <section id="register-user">
+            <h4 className="center">Register A User</h4>
+            <UserForm />
+          </section>
+        </div>
+      </div>
+      <div id="user-specific-info" className="container hide">
+        <section id="profile">
+          <UserProfile />
+        </section>
+        <section id="mentor" className="center">
+          <h4 className="center">Mentor Space</h4>
+          <PendingMentors />
+        </section>
+      </div>
+      <div className="row">
+        <div className="col m6">
+          <h4 className="center">Posts</h4>
+          <section id="posts">
+            <Post />
+            <PostList />
+          </section>
+        </div>
+        <div className="col m6">
+          <h4 className="center">Action List</h4>
+          <section id="action-list">
+            <ActionList />
+          </section>
+        </div>
+        <section id="add-post">
+          <h4 className="center">Add a new Post</h4>
+          <PostForm />
+        </section>
+      </div>
+    </>
   </Router>
 );
 

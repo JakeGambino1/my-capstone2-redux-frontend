@@ -28,6 +28,8 @@ class ConnectedForm extends Component {
     const { email, password } = this.state;
     this.props.loginUser({ email, password });
     this.setState({ email: '', password: '' });
+    document.getElementById('login-register-container').className += 'hide';
+    document.getElementById('user-specific-info').className -= 'hide';
   };
 
   render() {
