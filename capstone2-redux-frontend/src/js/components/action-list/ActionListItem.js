@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import DeleteActionListItem from './DeleteActionListItem';
 
 class ActionListItem extends Component {
+  // getStyle = () => {
+  //   return {
+  //     background: '#f4f4f4',
+  //     padding: '10px',
+  //     borderBottom: '1px #ccc dotted',
+  //     textDecoration: this.props.todo.completed ? 'line-through' : 'none'
+  //   };
+  // };
   render() {
     return this.props.actionListItems.map((actionItem, i) => (
       <tr>
@@ -25,5 +33,10 @@ class ActionListItem extends Component {
     ));
   }
 }
+
+// TodoItem.propTypes = {
+//   actionItem: PropTypes.object.isRequired,
+//   markComplete: PropTypes.func.isRequired
+// };
 
 export default ActionListItem;

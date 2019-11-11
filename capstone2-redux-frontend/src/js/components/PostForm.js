@@ -35,7 +35,7 @@ class ConnectedForm extends Component {
     return (
       <div className="row">
         <form onSubmit={this.handleSubmit}>
-          <div class="input-field">
+          <div className="input-field">
             <label htmlFor="title">Title</label>
             <input
               type="text"
@@ -44,7 +44,7 @@ class ConnectedForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div class="input-field">
+          <div className="input-field">
             <label htmlFor="content">Content</label>
             <textarea
               className="materialize-textarea"

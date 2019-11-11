@@ -22,35 +22,37 @@ const likeThisPost = e => {
 const ConnectedList = ({ posts, i }) => (
   <ul>
     {posts.map(el => (
-      <li key={i}>
-        <div>
-          <h5 key={'title ' + i}>
-            {el.title}
-            {el.isNewPost ? (
-              <span
-                name={el._id}
-                onClick={removeNotification}
-                class="collection-item"
-              >
-                <span name={el._id} class="new badge">
-                  this is
+      <article>
+        <li key={i}>
+          <div>
+            <h5 key={'title ' + i}>
+              {el.title}
+              {el.isNewPost ? (
+                <span
+                  name={el._id}
+                  onClick={removeNotification}
+                  class="collection-item"
+                >
+                  <span name={el._id} class="new badge">
+                    this is
+                  </span>
                 </span>
-              </span>
-            ) : (
-              <div></div>
-            )}
-          </h5>
-          <h6 key={'content ' + i}>{el.content}</h6>
-          <button
-            className="btn"
-            name={el._id}
-            onClick={likeThisPost.bind(this)}
-          >
-            <i className="material-icons">thumb_up</i>{' '}
-            {el.likes !== undefined ? el.likes.length : null}
-          </button>
-        </div>
-      </li>
+              ) : (
+                <div></div>
+              )}
+            </h5>
+            <h6 key={'content ' + i}>{el.content}</h6>
+            <button
+              className="btn"
+              name={el._id}
+              onClick={likeThisPost.bind(this)}
+            >
+              <i className="material-icons">thumb_up</i>{' '}
+              {el.likes !== undefined ? el.likes.length : null}
+            </button>
+          </div>
+        </li>
+      </article>
     ))}
   </ul>
 );

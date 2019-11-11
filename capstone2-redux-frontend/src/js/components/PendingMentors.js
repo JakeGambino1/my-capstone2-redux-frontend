@@ -14,14 +14,12 @@ export class PendingMentors extends Component {
 
   render() {
     const approveUser = e => {
-      console.log('approveUser called');
       e.preventDefault();
       console.log(`approver user ${e.target.name}`);
       this.props.approveUserToBeMentor(e.target.name);
     };
 
     const denyUser = e => {
-      console.log('denyUser called');
       e.preventDefault();
       console.log(`deny user ${e.target.name}`);
       this.props.denyUserToBeMentor(e.target.name);
@@ -75,21 +73,23 @@ export class PendingMentors extends Component {
     }
     if (this.props.currentUser.isAdmin) {
       return (
-        <ul>
-          {this.props.pendingMentors
-            .filter(el => el !== null)
-            .map(el => (
-              <li>
-                Name: {el.firstName} {el.lastName}{' '}
-                <button className="btn" name={el._id} onClick={approveUser}>
-                  Approve User
-                </button>
-                <button className="btn" name={el._id} onClick={denyUser}>
-                  Deny User
-                </button>
-              </li>
-            ))}
-        </ul>
+        <article>
+          <ul>
+            {this.props.pendingMentors
+              .filter(el => el !== null)
+              .map(el => (
+                <li>
+                  Name: {el.firstName} {el.lastName}{' '}
+                  <button className="btn" name={el._id} onClick={approveUser}>
+                    Approve User
+                  </button>
+                  <button className="btn" name={el._id} onClick={denyUser}>
+                    Deny User
+                  </button>
+                </li>
+              ))}
+          </ul>
+        </article>
       );
     }
   }

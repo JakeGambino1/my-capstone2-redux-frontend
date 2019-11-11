@@ -44,17 +44,20 @@ class ActionList extends Component {
     console.log(this.state.actionListItems);
   };
 
-  markComplete = e => {
-    let completeStyle = {
-      textDecoration: 'line-through'
-    };
-    e.target.style = completeStyle;
-    console.log(e.target.style.textDecoration);
+  markComplete = id => {
+    this.setState({
+      actionListItems: this.state.actionListItems.map(actionItem => {
+        if (actionItem.id === id) {
+          actionItem.completed = !actionItem.completed;
+        }
+        return actionItem;
+      })
+    });
   };
 
   render() {
     return (
-      <div>
+      <section>
         <AddActionListItem
           addActionListItem={this.addActionListItem.bind(this)}
         />
@@ -75,7 +78,7 @@ class ActionList extends Component {
             />
           </tbody>
         </table>
-      </div>
+      </section>
     );
   }
 }

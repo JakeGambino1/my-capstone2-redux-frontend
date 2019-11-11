@@ -36,14 +36,14 @@ export function middlewareFunctions({ dispatch }) {
         console.log('PENDING_MENTOR_APPROVED middleware');
         axios.put(`http://localhost:5000/api/users/${action.payload}`, {
           requestToBeMentor: false,
-          isMentor: false
+          isMentor: true
         });
       }
       if (action.type === PENDING_MENTOR_DENIED) {
         console.log('PENDING_MENTOR_DENIED middleware');
         axios.put(`http://localhost:5000/api/users/${action.payload}`, {
           requestToBeMentor: false,
-          isMentor: true
+          isMentor: false
         });
       }
       if (action.type === POST_LIKED) {
